@@ -4,7 +4,7 @@ body {
 #main {
   display: flex;
   width: 100vw;
-  height: 80vh;
+  min-height: 80vh;
   background-color: lightgreen;
   flex-direction: column;
   align-items: center;
@@ -12,14 +12,72 @@ body {
 }
 .seacrhInput {
   width: 25rem;
-  height: 3rem;
+  height: 2rem;
   padding: 1rem;
   border-radius: 0.4rem;
   border: solid rgb(26, 32, 202) 1px;
+  margin: 1rem;
 }
 .navBar {
   display: flex;
   height: 10vh;
   align-items: center;
   background-color: lightblue;
+}
+.mainPictures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.card-picture {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 300px;
+  margin: 10px;
+  width: 12rem;
+  height: 15rem;
+  cursor: pointer;
+}
+
+/* Hover effect for cards */
+.card-picture:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Image inside the card */
+.card-picture img {
+  width: 100%;
+  height: 60%;
+  display: block;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Text below the image */
+.card-picture p {
+  padding: 15px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-picture {
+    max-width: 90%;
+  }
 }
