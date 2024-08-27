@@ -3,7 +3,7 @@ body {
 }
 #main {
   display: flex;
-  width: 100vw;
+  width: 100%;
   min-height: 80vh;
   background-color: lightgreen;
   flex-direction: column;
@@ -27,19 +27,20 @@ body {
 .mainPictures {
   display: flex;
   flex-wrap: wrap;
+  max-width: 100%;
   gap: 2rem;
   align-items: center;
   justify-content: center;
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .card-picture {
-  background-color: #fff;
+  background-color: #ffffff7e;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 300px;
-  margin: 10px;
   width: 12rem;
   height: 15rem;
   cursor: pointer;
