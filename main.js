@@ -9,6 +9,8 @@ const formInput = document.getElementById("container-form");
 const dialogModal = document.getElementById("dialog");
 const dialogCardDetails = document.getElementById("dialog-details");
 const dialogButtonClose = document.getElementById("dialog-button");
+const buttonForMore = document.querySelector(".button-37");
+let pageNumber = 1;
 
 async function fetchById(imgId) {
   const resFetch = await fetch(`${url}${apiKey}&id=${imgId}`);
@@ -21,7 +23,6 @@ async function fetchData() {
   try {
     const resFetch = await fetch(`${url}${apiKey}`);
     const data = await resFetch.json();
-    console.log(data);
 
     const dataFetch = data.hits.map((pictureData) => {
       return `<div class="card-picture">
@@ -36,13 +37,13 @@ async function fetchData() {
     mainElement.addEventListener("click", function (event) {
       const target = event.target.closest(".card-picture");
 
-      if (target) {
+      if (target.children[2]?.innerHTML) {
         const imageClickedDetails = fetchById(target.children[2].innerHTML);
         imageClickedDetails.then((data) => {
           console.log(data);
           dialogCardDetails.innerHTML = `<div class="card-dialog">
           <h2>${data.hits[0].user}</h2>
-          <img src=${data.hits[0].largeImageURL} alt="picture">
+          <img class="dialog-img" src=${data.hits[0].largeImageURL} alt="picture">
           <p>downloads: ${data.hits[0].downloads}</p> 
           <p>likes: ${data.hits[0].likes}</p>
           <span> image size: ${data.hits[0].imageSize}</span>
@@ -60,7 +61,6 @@ fetchData();
 
 async function onClickSearch(e) {
   e.preventDefault();
-  console.dir(e.srcElement[0].value);
 
   try {
     const resFetch = await fetch(`${url}${apiKey}`);
@@ -73,21 +73,34 @@ async function onClickSearch(e) {
       return `<div class="card-picture">
           <img src=${pictureData.previewURL} alt="picture">
           <p>${pictureData.tags}</p>
+        <div class="id-hidden">${pictureData.id}</div>
       </div>`;
     });
-    mainElement.innerHTML = dataElements;
+    mainElement.innerHTML = "";
+    mainElement.insertAdjacentHTML("afterbegin", dataElements.join(" "));
+
     mainElement.addEventListener("click", function (event) {
       const target = event.target.closest(".card-picture");
 
       if (target) {
-        // dialogCardDetails = ``
         console.log(target);
 
+        const imageClickedDetails = fetchById(target.children[2].innerHTML);
+        imageClickedDetails.then((data) => {
+          console.log(data);
+          dialogCardDetails.innerHTML = `<div class="card-dialog">
+          <h2>${data.hits[0].user}</h2>
+          <img class="dialog-img" src=${data.hits[0].largeImageURL} alt="picture">
+          <p>downloads: ${data.hits[0].downloads}</p> 
+          <p>likes: ${data.hits[0].likes}</p>
+          <span> image size: ${data.hits[0].imageSize}</span>
+          </div>`;
+        });
         dialogModal.showModal();
       }
     });
   } catch (error) {
-    console.log(error);
+    console.dir(error.children[1].innerHTML);
   }
 }
 
@@ -99,3 +112,20 @@ formInput.addEventListener("submit", onClickSearch);
 dialogButtonClose.addEventListener("click", () => {
   dialogModal.close();
 });
+
+async function fetchMorePictures() {
+  pageNumber++;
+  const resFetch = await fetch(`${url}${apiKey}&page=${pageNumber}`);
+  const data = await resFetch.json();
+  console.log(data);
+
+  mainElement.innerHTML += data.hits.map((pictureData) => {
+    return `<div class="card-picture">
+        <img src=${pictureData.previewURL} alt="picture">
+        <p>${pictureData.tags}</p>
+      <div class="id-hidden">${pictureData.id}</div>
+    </div>`;
+  });
+}
+
+buttonForMore.addEventListener("click", fetchMorePictures);
