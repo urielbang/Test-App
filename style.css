@@ -181,3 +181,6 @@ dialog button:hover {
     transform: translateY(0);
   }
 }
+.id-hidden {
+  display: none;
+}
