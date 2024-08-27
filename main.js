@@ -1,16 +1,16 @@
+"use strict";
+
 const apiKey = "42079125-1909400cd5615db78c9c2cb93";
 const url = "https://pixabay.com/api/?key=";
 const mainElement = document.querySelector(".mainPictures");
 const input = document.getElementById("seacrhInput");
 const buttonSearch = document.querySelector(".seacrhButton");
 const formInput = document.getElementById("container-form");
-
+const dialogModal = document.getElementById("dialog");
 async function fetchData() {
   try {
     const resFetch = await fetch(`${url}${apiKey}`);
     const data = await resFetch.json();
-
-    console.log(data);
 
     const dataFetch = data.hits.map((pictureData) => {
       return `<div class="card-picture">
@@ -51,4 +51,14 @@ async function onClickSearch(e) {
   }
 }
 
+// onSubmit form
 formInput.addEventListener("submit", onClickSearch);
+
+// when click on card pop up modal with details
+mainElement.addEventListener("click", function (event) {
+  const target = event.target.closest(".card-picture");
+
+  if (target) {
+    dialogModal.showModal();
+  }
+});
