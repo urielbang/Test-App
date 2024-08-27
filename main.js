@@ -26,6 +26,7 @@ async function fetchData() {
 
     const dataFetch = data.hits.map((pictureData) => {
       return `<div class="card-picture">
+    <span class="favorite-icon">♥</span>
           <img src=${pictureData.previewURL} alt="picture">
           <p>${pictureData.tags}</p>
           <div class="id-hidden">${pictureData.id}</div>
@@ -38,7 +39,7 @@ async function fetchData() {
       const target = event.target.closest(".card-picture");
 
       if (target.children[2]?.innerHTML) {
-        const imageClickedDetails = fetchById(target.children[2].innerHTML);
+        const imageClickedDetails = fetchById(target.children[3].innerHTML);
         imageClickedDetails.then((data) => {
           console.log(data);
           dialogCardDetails.innerHTML = `<div class="card-dialog">
@@ -71,6 +72,7 @@ async function onClickSearch(e) {
 
     const dataElements = filteredData.map((pictureData) => {
       return `<div class="card-picture">
+    <span class="favorite-icon">♥</span>
           <img src=${pictureData.previewURL} alt="picture">
           <p>${pictureData.tags}</p>
         <div class="id-hidden">${pictureData.id}</div>
@@ -85,7 +87,7 @@ async function onClickSearch(e) {
       if (target) {
         console.log(target);
 
-        const imageClickedDetails = fetchById(target.children[2].innerHTML);
+        const imageClickedDetails = fetchById(target.children[3].innerHTML);
         imageClickedDetails.then((data) => {
           console.log(data);
           dialogCardDetails.innerHTML = `<div class="card-dialog">
@@ -121,6 +123,7 @@ async function fetchMorePictures() {
 
   mainElement.innerHTML += data.hits.map((pictureData) => {
     return `<div class="card-picture">
+    <span class="favorite-icon">♥</span>
         <img src=${pictureData.previewURL} alt="picture">
         <p>${pictureData.tags}</p>
       <div class="id-hidden">${pictureData.id}</div>

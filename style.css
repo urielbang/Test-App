@@ -235,3 +235,44 @@ dialog button:hover {
     padding: 10px 30px;
   }
 }
+
+.card-picture i {
+  position: absolute;
+  margin: 1rem;
+}
+/* Container for the list */
+.container-categories {
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 3rem auto; /* Center the list horizontally */
+  display: flex; /* Display list items in a row */
+  flex-wrap: wrap; /* Wrap to the next line if too wide */
+  gap: 10px; /* Space between items */
+  justify-content: center; /* Center items horizontally */
+}
+
+/* Styling each list item */
+.container-categories li {
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text color */
+  padding: 10px 20px; /* Space inside each item */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+  font-size: 16px; /* Slightly larger font size */
+  font-family: Arial, sans-serif; /* Modern sans-serif font */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Hover effect for list items */
+.container-categories li:hover {
+  background-color: #13aa52; /* Blue background on hover */
+  color: white; /* White text on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+}
+.favorite-icon {
+  position: absolute;
+  font-size: 1.7rem;
+  margin: 1rem;
+}
