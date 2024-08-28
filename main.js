@@ -10,6 +10,7 @@ const dialogModal = document.getElementById("dialog");
 const dialogCardDetails = document.getElementById("dialog-details");
 const dialogButtonClose = document.getElementById("dialog-button");
 const buttonForMore = document.querySelector(".button-37");
+const categoriesButtons = document.getElementsByTagName("li");
 let pageNumber = 1;
 
 async function fetchById(imgId) {
@@ -132,3 +133,25 @@ async function fetchMorePictures() {
 }
 
 buttonForMore.addEventListener("click", fetchMorePictures);
+
+async function fetchImagesByCategories(categoryName) {
+  const resData = await fetch(`${url}${apiKey}&category=${categoryName}`);
+  const data = await resData.json();
+  return data;
+}
+
+//! filter categories
+for (const element of categoriesButtons) {
+  element.addEventListener("click", () => {
+    fetchImagesByCategories(element.childNodes[0].data).then((data) => {
+      mainElement.innerHTML = data.hits.map((pictureData) => {
+        return `<div class="card-picture">
+        <span class="favorite-icon">♥</span>
+            <img src=${pictureData.previewURL} alt="picture">
+            <p>${pictureData.tags}</p>
+          <div class="id-hidden">${pictureData.id}</div>
+        </div>`;
+      });
+    });
+  });
+}

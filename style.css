@@ -268,35 +268,34 @@ dialog button:hover {
   margin: 1rem;
 }
 /* Container for the list */
-.container-categories {
+#container-categories {
   list-style: none; /* Remove default bullet points */
   padding: 0; /* Remove default padding */
   margin: 3rem auto; /* Center the list horizontally */
   display: flex; /* Display list items in a row */
   flex-wrap: wrap; /* Wrap to the next line if too wide */
-  gap: 10px; /* Space between items */
-  justify-content: center; /* Center items horizontally */
+  gap: 10px;
+  justify-content: center;
 }
 
-/* Styling each list item */
-.container-categories li {
-  background-color: #f0f0f0; /* Light gray background */
-  color: #333; /* Dark text color */
-  padding: 10px 20px; /* Space inside each item */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
-  font-size: 16px; /* Slightly larger font size */
-  font-family: Arial, sans-serif; /* Modern sans-serif font */
-  cursor: pointer; /* Pointer cursor on hover */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+#container-categories li {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Hover effect for list items */
-.container-categories li:hover {
-  background-color: #13aa52; /* Blue background on hover */
-  color: white; /* White text on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+#container-categories li:hover {
+  background-color: #13aa52;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .favorite-icon {
   position: absolute;
