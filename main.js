@@ -1,7 +1,5 @@
 "use strict";
 
-const apiKey = "42079125-1909400cd5615db78c9c2cb93";
-const url = "https://pixabay.com/api/?key=";
 const mainElement = document.querySelector(".mainPictures");
 const input = document.getElementById("seacrhInput");
 const buttonSearch = document.querySelector(".seacrhButton");
@@ -11,10 +9,11 @@ const dialogCardDetails = document.getElementById("dialog-details");
 const dialogButtonClose = document.getElementById("dialog-button");
 const buttonForMore = document.querySelector(".button-37");
 const categoriesButtons = document.getElementsByTagName("li");
+const URL = "http://localhost:8000/api/v1/pictures";
 let pageNumber = 1;
 
 async function fetchById(imgId) {
-  const resFetch = await fetch(`${url}${apiKey}&id=${imgId}`);
+  const resFetch = await fetch(`${URL}/${imgId}`);
   const data = await resFetch.json();
 
   return data;
@@ -22,7 +21,7 @@ async function fetchById(imgId) {
 
 async function fetchData() {
   try {
-    const resFetch = await fetch(`${url}${apiKey}`);
+    const resFetch = await fetch(URL);
     const data = await resFetch.json();
 
     console.log(data);
@@ -72,7 +71,7 @@ async function onClickSearch(e) {
   e.preventDefault();
 
   try {
-    const resFetch = await fetch(`${url}${apiKey}`);
+    const resFetch = await fetch(`${URL}`);
     const data = await resFetch.json();
     const filteredData = data.hits.filter((picture) => {
       return picture.tags.includes(e.srcElement[0].value);
@@ -130,7 +129,7 @@ dialogButtonClose.addEventListener("click", () => {
 
 async function fetchMorePictures() {
   pageNumber++;
-  const resFetch = await fetch(`${url}${apiKey}&page=${pageNumber}`);
+  const resFetch = await fetch(`${URL}/pageNumber/${pageNumber}`);
   const data = await resFetch.json();
   console.log(data);
 
@@ -150,7 +149,7 @@ async function fetchMorePictures() {
 buttonForMore.addEventListener("click", fetchMorePictures);
 
 async function fetchImagesByCategories(categoryName) {
-  const resData = await fetch(`${url}${apiKey}&category=${categoryName}`);
+  const resData = await fetch(`${URL}/pageCategory/${categoryName}`);
   const data = await resData.json();
   return data;
 }
