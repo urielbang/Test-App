@@ -25,12 +25,19 @@ async function fetchData() {
     const resFetch = await fetch(`${url}${apiKey}`);
     const data = await resFetch.json();
 
+    console.log(data);
+
     const dataFetch = data.hits.map((pictureData) => {
       return `<div class="card-picture">
     <span class="favorite-icon">♥</span>
           <img src=${pictureData.previewURL} alt="picture">
           <p>${pictureData.tags}</p>
           <div class="id-hidden">${pictureData.id}</div>
+          <div class="info-overlay">
+        <p>
+        likes: ${pictureData.likes} views: ${pictureData.views}
+        </p>
+       </div>
       </div>`;
     });
 
@@ -77,6 +84,11 @@ async function onClickSearch(e) {
           <img src=${pictureData.previewURL} alt="picture">
           <p>${pictureData.tags}</p>
         <div class="id-hidden">${pictureData.id}</div>
+        <div class="info-overlay">
+         <p>
+        likes: ${pictureData.likes} views: ${pictureData.views}
+        </p>
+       </div>
       </div>`;
     });
     mainElement.innerHTML = "";
@@ -128,6 +140,9 @@ async function fetchMorePictures() {
         <img src=${pictureData.previewURL} alt="picture">
         <p>${pictureData.tags}</p>
       <div class="id-hidden">${pictureData.id}</div>
+      <div class="info-overlay">
+    <p>likes: ${pictureData.likes} views: ${pictureData.views}</p>
+  </div>
     </div>`;
   });
 }
@@ -150,6 +165,9 @@ for (const element of categoriesButtons) {
             <img src=${pictureData.previewURL} alt="picture">
             <p>${pictureData.tags}</p>
           <div class="id-hidden">${pictureData.id}</div>
+         <div class="info-overlay">
+           <p>likes: ${pictureData.likes} views: ${pictureData.views}</p>
+          </div>
         </div>`;
       });
     });
