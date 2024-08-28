@@ -1,11 +1,15 @@
 body {
   margin: 0;
+  font-family: "Nerko One", cursive;
+  background-image: url("./images/pattern_leaves-6_1_5_0-0_20_2__3384c6_49657b_476c8a.png");
+  background-repeat: repeat-y;
 }
 #main {
   display: flex;
-  width: 99.24vw;
+  /* width: 99.24vw; */
   min-height: 80vh;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -20,11 +24,34 @@ body {
 }
 .navBar {
   display: flex;
-
-  height: 10vh;
   align-items: center;
-  background-color: lightblue;
+  justify-content: center; /* Center the content horizontally */
+  height: 10vh;
+  background: linear-gradient(
+    135deg,
+    #3384c6,
+    #49657b,
+    #476c8a
+  ); /* Gradient background */
+
+  padding: 0 30px; /* Increase padding for more spacing */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow for more depth */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  font-size: 20px; /* Larger font size */
+  color: white; /* White text color for better contrast */
+  margin: 20px; /* Add margin around the navbar */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
+
+.navBar:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+}
+
+.navBar p {
+  margin: 0; /* Remove default margin */
+}
+
 .mainPictures {
   display: flex;
   flex-wrap: wrap;
