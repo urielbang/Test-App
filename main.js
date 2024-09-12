@@ -9,7 +9,7 @@ const dialogCardDetails = document.getElementById("dialog-details");
 const dialogButtonClose = document.getElementById("dialog-button");
 const buttonForMore = document.querySelector(".button-37");
 const categoriesButtons = document.getElementsByTagName("li");
-const URL = "http://localhost:8000/api/v1/pictures";
+const URL = "http://localhost:5000/api/v1/pictures";
 let pageNumber = 1;
 
 async function fetchById(imgId) {
